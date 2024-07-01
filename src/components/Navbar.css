@@ -1,0 +1,123 @@
+/* src/components/Navbar.css */
+
+/* 네비게이션 바 기본 스타일 */
+.navbar {
+  background-color: #fff;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: background-color 0.3s ease;
+}
+
+/* 다크모드 스타일 */
+.navbar.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+/* 네비게이션 바 컨테이너 스타일 */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 50px;
+}
+
+/* 로고 스타일 */
+.navbar-logo {
+  color: #333;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.dark-mode .navbar-logo {
+  color: #fff;
+}
+
+/* 햄버거 메뉴 버튼 스타일 */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* 사이드 메뉴 스타일 */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: right 0.3s ease;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+/* 다크모드에서의 사이드 메뉴 스타일 */
+.dark-mode .side-menu {
+  background-color: rgba(51, 51, 51, 0.9);
+}
+
+/* 사이드 메뉴 링크 스타일 */
+.side-menu a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .side-menu a {
+  color: #fff;
+}
+
+.side-menu a:hover, .side-menu a.active {
+  background-color: #f0f0f0;
+}
+
+.dark-mode .side-menu a:hover, .dark-mode .side-menu a.active {
+  background-color: #555;
+}
+
+/* 다크모드 토글 버튼 스타일 */
+.mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.mode-toggle:hover {
+  background-color: #f0f0f0;
+}
+
+.dark-mode .mode-toggle:hover {
+  background-color: #555;
+}
+
+/* 검색창 스타일 */
+.search-box input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

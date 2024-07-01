@@ -1,0 +1,75 @@
+/* src/pages/PostDetail.css */
+
+.post-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* 게시글 제목 스타일 */
+  .post-detail h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* 게시글 이미지 스타일 */
+  .post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  /* 게시글 정보 스타일 */
+  .post-info {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .post-info p {
+    margin: 5px 0;
+  }
+  
+  /* 게시글 내용 스타일 */
+  .post-content {
+    line-height: 1.6;
+  }
+  
+  .post-content h2 {
+    font-size: 1.5em;
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* 태그 스타일 */
+  .post-tags {
+    margin-top: 20px;
+  }
+  
+  .tag {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+  }
+  
+  /* 로딩, 에러, 찾을 수 없음 메시지 스타일 */
+  .loading, .error, .not-found {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 50px;
+    color: #666;
+  }
+  
+  .error {
+    color: #d9534f;
+  }

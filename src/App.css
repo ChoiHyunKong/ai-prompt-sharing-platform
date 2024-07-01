@@ -1,0 +1,90 @@
+/* App.css */
+
+/* 기본 스타일 */
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 로고 스타일 (사용하지 않는 경우 제거 가능) */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+/* 로고 애니메이션 (사용하지 않는 경우 제거 가능) */
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* 헤더 스타일 (사용하지 않는 경우 제거 가능) */
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* 링크 스타일 (사용하지 않는 경우 제거 가능) */
+.App-link {
+  color: #61dafb;
+}
+
+/* 로고 회전 애니메이션 (사용하지 않는 경우 제거 가능) */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 전체 페이지 기본 스타일 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 메인 콘텐츠 영역 스타일 */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* 다크 모드 스타일 */
+body.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+.App.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* 다크 모드에서의 헤더 스타일 (사용하지 않는 경우 제거 가능) */
+.App.dark-mode .App-header {
+  background-color: #1f1f1f;
+}
+
+/* 다크 모드에서의 링크 스타일 (사용하지 않는 경우 제거 가능) */
+.App.dark-mode .App-link {
+  color: #bb86fc;
+}
+
+/* 다크 모드에서의 콘텐츠 영역 스타일 */
+.App.dark-mode .content {
+  background-color: #1f1f1f;
+}
