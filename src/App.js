@@ -12,6 +12,8 @@ import PostDetail from './pages/PostDetail';
 import Profile from './pages/Profile'; 
 import './App.css';
 
+/* git 테스트 */
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
