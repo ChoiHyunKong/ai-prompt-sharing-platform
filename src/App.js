@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import './App.css';
 
 /* git 테스트 */
+/* git 테스트 2 - 프롬프트 */
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
