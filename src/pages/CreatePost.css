@@ -22,10 +22,10 @@
   input[type="text"],
   input[type="url"],
   textarea {
-    width: 100%;
+    width: 500px;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 30px 0px 0px 30px;
     font-size: 16px;
   }
   
@@ -56,3 +56,16 @@
       width: 95%;
     }
   }
+
+  /* 다크 모드 스타일 */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #666666;
+}

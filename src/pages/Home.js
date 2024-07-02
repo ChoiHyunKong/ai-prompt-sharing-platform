@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PostDetailPopup from '../components/PostDetailPopup';
 import './Home.css';
 
-function Home() {
+function Home({ darkMode}) {
   // 상태 관리
   const [posts, setPosts] = useState([]);
   const [visiblePosts, setVisiblePosts] = useState([]);
@@ -81,7 +81,8 @@ function Home() {
   };
 
   return (
-    <div className="home-container" ref={containerRef}>
+   
+      <div className={`home-container ${darkMode ? 'dark-mode' : ''}`}>
       <main>
         <section className="best-home-posts">
           <h2>Best</h2>
@@ -134,7 +135,8 @@ function Home() {
       {selectedPost && (
         <PostDetailPopup post={selectedPost} onClose={handleClosePopup} />
       )}
-    </div>
+      </div>
+  
   );
 }
 

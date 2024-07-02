@@ -102,3 +102,17 @@
   .google { background-color: #4285F4; }
   .facebook { background-color: #1877F2; }
   .twitter { background-color: #1DA1F2; }
+
+
+/* 다크 모드 스타일 */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #666666;
+}

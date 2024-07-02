@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 
-function Register() {
+function Register({ darkMode}) {
   const [activeTab, setActiveTab] = useState('phone');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
@@ -29,6 +29,7 @@ function Register() {
   };
 
   return (
+    <div className={`register-container ${darkMode ? 'dark-mode' : ''}`}>
     <div className="register-container">
       <h2>회원가입</h2>
       <div className="tab-container">
@@ -95,6 +96,7 @@ function Register() {
           <button onClick={() => handleSNSLogin('트위터')} className="sns-btn twitter">T</button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

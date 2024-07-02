@@ -1,4 +1,4 @@
-// client/src/App.js
+// src/App.js
 
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -12,12 +12,11 @@ import PostDetail from './pages/PostDetail';
 import Profile from './pages/Profile'; 
 import './App.css';
 
-/* git 테스트 */
-/* git 테스트 2 - 프롬프트 */
-
 function App() {
+  // 다크모드 상태 관리
   const [darkMode, setDarkMode] = useState(false);
 
+  // 컴포넌트 마운트 시 로컬 스토리지에서 다크모드 설정 불러오기
   useEffect(() => {
     const savedMode = localStorage.getItem('darkMode');
     if (savedMode) {
@@ -25,15 +24,13 @@ function App() {
     }
   }, []);
 
+  // 다크모드 상태 변경 시 로컬 스토리지에 저장 및 body 클래스 업데이트
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
+    document.body.classList.toggle('dark-mode', darkMode);
   }, [darkMode]);
 
+  // 다크모드 토글 함수
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };

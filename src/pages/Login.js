@@ -6,7 +6,8 @@ import { AuthContext } from '../contexts/AuthContext';
 import { login } from '../services/api';
 import './Login.css';
 
-function Login() {
+
+function Login({ darkMode}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -44,7 +45,8 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div className={`login-container ${darkMode ? 'dark-mode' : ''}`}>
+  
       <h2>로그인</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
@@ -89,6 +91,7 @@ function Login() {
       </div>
       <p>계정이 없으신가요? <Link to="/register">회원가입</Link></p>
     </div>
+  
   );
 }
 

@@ -88,3 +88,14 @@ body.dark-mode {
 .App.dark-mode .content {
   background-color: #1f1f1f;
 }
+
+/* App.css */
+
+.App.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+.App.dark-mode .content {
+  background-color: #1f1f1f;
+}

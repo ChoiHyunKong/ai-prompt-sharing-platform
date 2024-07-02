@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { createPost } from '../services/api';
 import './CreatePost.css';
 
-function CreatePost() {
+function CreatePost({dakrMode}) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -48,7 +48,7 @@ function CreatePost() {
   };
 
   return (
-    <div className="create-post-container">
+    <div className={`create-post-container ${dakrMode ? 'dark-mode' : ''}`}>
       <h2>게시글 작성</h2>
       <form onSubmit={handleSubmit}>
         {/* 제목 입력 필드 */}
@@ -119,6 +119,7 @@ function CreatePost() {
         <button type="submit" className="submit-btn">올리기</button>
       </form>
     </div>
+   
   );
 }
 

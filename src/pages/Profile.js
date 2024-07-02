@@ -5,7 +5,7 @@ import { getUserPosts } from '../services/api';
 import PostDetailPopup from '../components/PostDetailPopup'; // 새로 만든 팝업 컴포넌트 import
 import './Profile.css';
 
-function Profile() {
+function Profile({darkMode}) {
   // 상태 관리
   const [userInfo, setUserInfo] = useState(null);
   const [posts, setPosts] = useState([]);
@@ -91,7 +91,7 @@ function Profile() {
   };
 
   return (
-    <div className="profile-container" ref={containerRef}>
+    <div className={`profile-container ${darkMode ? 'dark-mode' : ''}`}>
       {/* 사용자 정보 섹션 */}
       <div className="user-info">
         <img src={userInfo?.profileImage || 'default-profile.jpg'} alt="Profile" className="profile-image" />

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getPostById } from '../services/api';
 import './PostDetail.css';
 
-function PostDetail() {
+function PostDetail({darkMode}) {
   // URL 파라미터에서 게시글 ID 추출
   const { id } = useParams();
   
@@ -41,7 +41,7 @@ function PostDetail() {
   if (!post) return <div className="not-found">게시글을 찾을 수 없습니다.</div>;
 
   return (
-    <div className="post-detail">
+    <div className={`post-detail-container ${darkMode ? 'dark-mode' : ''}`}>
       <h1>{post.title}</h1>
       <img src={post.imageUrl} alt={post.title} className="post-image" />
       <div className="post-info">
