@@ -12,6 +12,7 @@ import PostDetail from './pages/PostDetail';
 import Profile from './pages/Profile'; 
 import './App.css';
 
+
 function App() {
   // 다크모드 상태 관리
   const [darkMode, setDarkMode] = useState(false);

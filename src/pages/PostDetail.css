@@ -1,87 +1,112 @@
-/* src/pages/PostDetail.css */
-
-.post-detail {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* 게시글 제목 스타일 */
-  .post-detail h1 {
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* 게시글 이미지 스타일 */
-  .post-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  /* 게시글 정보 스타일 */
-  .post-info {
-    background-color: #f0f0f0;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  .post-info p {
-    margin: 5px 0;
-  }
-  
-  /* 게시글 내용 스타일 */
-  .post-content {
-    line-height: 1.6;
-  }
-  
-  .post-content h2 {
-    font-size: 1.5em;
-    color: #444;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  
-  /* 태그 스타일 */
-  .post-tags {
-    margin-top: 20px;
-  }
-  
-  .tag {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    font-size: 0.9em;
-  }
-  
-  /* 로딩, 에러, 찾을 수 없음 메시지 스타일 */
-  .loading, .error, .not-found {
-    text-align: center;
-    font-size: 1.2em;
-    margin-top: 50px;
-    color: #666;
-  }
-  
-  .error {
-    color: #d9534f;
-  }
-  /* 다크 모드 스타일 */
-.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
+/* 팝업 오버레이 스타일 */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
 }
 
-.dark-mode input,
-.dark-mode textarea {
-  background-color: #333333;
-  color: #ffffff;
-  border-color: #666666;
+/* 팝업이 열릴 때의 스타일 */
+.popup-overlay.open {
+  transform: translateX(0);
+}
+
+/* 팝업 내용 컨테이너 */
+.popup-content {
+  padding: 20px;
+}
+
+/* 닫기 버튼 스타일 */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 팝업 헤더 (작성자 정보) 스타일 */
+.popup-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* 작성자 아바타 이미지 스타일 */
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* 작성자 이름 스타일 */
+.author-name {
+  font-weight: bold;
+  margin-right: auto;
+}
+
+/* 팔로우 및 옵션 버튼 스타일 */
+.follow-button, .options-button {
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+
+/* 게시물 이미지 스타일 */
+.popup-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* 게시물 상세 정보 컨테이너 */
+.popup-details {
+  margin-top: 15px;
+}
+
+/* 태그 컨테이너 스타일 */
+.tags {
+  margin: 10px 0;
+}
+
+/* 개별 태그 스타일 */
+.tag {
+  background-color: #f0f0f0;
+  padding: 3px 8px;
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+/* 상호작용 버튼 컨테이너 스타일 */
+.interaction-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+/* 댓글 입력 폼 스타일 */
+.comment-form {
+  display: flex;
+  margin-top: 15px;
+}
+
+/* 댓글 입력 필드 스타일 */
+.comment-form input {
+  flex-grow: 1;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+/* 댓글 제출 버튼 스타일 */
+.comment-form button {
+  padding: 5px 10px;
 }

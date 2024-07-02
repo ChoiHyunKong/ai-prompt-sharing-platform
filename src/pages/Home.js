@@ -1,17 +1,15 @@
-// src/pages/Home.js
-
 import React, { useState, useEffect, useRef } from 'react';
-import PostDetailPopup from '../components/PostDetailPopup';
+import PostDetailPopup from '../components/PostDetailPopup'; // PostDetailPopup 컴포넌트 임포트
 import './Home.css';
 
-function Home({ darkMode}) {
+function Home() {
   // 상태 관리
-  const [posts, setPosts] = useState([]);
-  const [visiblePosts, setVisiblePosts] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [showTopButton, setShowTopButton] = useState(false);
+  const [posts, setPosts] = useState([]); // 모든 게시글 데이터
+  const [visiblePosts, setVisiblePosts] = useState([]); // 화면에 표시될 게시글
+  const [selectedPost, setSelectedPost] = useState(null); // 선택된 게시글
+  const [showTopButton, setShowTopButton] = useState(false); // 'TOP' 버튼 표시 여부
   
-  const containerRef = useRef(null);
+  const containerRef = useRef(null); // 컨테이너 요소에 대한 참조
 
   // 컴포넌트 마운트 시 데이터 로드
   useEffect(() => {
@@ -48,7 +46,7 @@ function Home({ darkMode}) {
         userName: `User${i + 1}`,
         tags: ['AI', 'Prompt', 'Image'],
         excerpt: 'Exciting updates from around the world',
-        prompt: `This is a prompt for post ${i + 1}. It describes how the image was generated.` // 프롬프트 추가
+        prompt: `This is a prompt for post ${i + 1}. It describes how the image was generated.`
       }));
       setPosts(dummyPosts);
       setVisiblePosts(dummyPosts.slice(0, 15)); // 초기에 15개 게시글만 표시
@@ -80,63 +78,64 @@ function Home({ darkMode}) {
     setSelectedPost(null);
   };
 
+  // 게시글 카드 컴포넌트 (중복 코드 제거)
+  const PostCard = ({ post, isBest }) => (
+    <div 
+      className={isBest ? "best-home-post" : "post-card"} 
+      onClick={() => handlePostClick(post)}
+    >
+      <img src={post.imageUrl} alt={post.title} />
+      <div className={isBest ? "post-home-info" : "post-card-info"}>
+        {isBest && <span className="crown-icon">👑</span>}
+        <span className="user-icon">👤</span>
+        <p>{post.excerpt}</p>
+        <p>{post.userName}</p>
+        <p>{post.likes} Liked, {post.views} Views</p>
+      </div>
+      {/* 호버 시 프롬프트 표시 */}
+      <div className="post-hover">
+        <p>{post.prompt}</p>
+      </div>
+    </div>
+  );
+
   return (
-   
-      <div className={`home-container ${darkMode ? 'dark-mode' : ''}`}>
+    <div className="home-container" ref={containerRef}>
       <main>
+        {/* Best 섹션 */}
         <section className="best-home-posts">
           <h2>Best</h2>
           <div className="best-grid">
             {posts.slice(0, 3).map((post) => (
-              <div key={post.id} className="best-home-post" onClick={() => handlePostClick(post)}>
-                <img src={post.imageUrl} alt={post.title} />
-                <div className="post-home-info">
-                  <span className="crown-icon">👑</span>
-                  <span className="user-icon">👤</span>
-                  <p>{post.excerpt}</p>
-                  <p>{post.userName}</p>
-                  <p>{post.likes} Liked, {post.views} Views</p>
-                </div>
-                {/* 프롬프트 설명문 추가 */}
-                <div className="post-hover">
-                  <p>{post.prompt}</p>
-                </div>
-              </div>
+              <PostCard key={post.id} post={post} isBest={true} />
             ))}
           </div>
         </section>
 
+        {/* 일반 게시글 섹션 */}
         <section className="all-posts">
-      
           <div className="post-grid">
             {visiblePosts.map((post) => (
-              <div key={post.id} className="post-card" onClick={() => handlePostClick(post)}>
-                <img src={post.imageUrl} alt={post.title} />
-                <h3>{post.title}</h3>
-                <p>{post.userName}</p>
-                <p>{post.likes} Liked, {post.views} Views</p>
-                {/* 프롬프트 설명문 추가 */}
-                <div className="post-hover">
-                  <p>{post.prompt}</p>
-                </div>
-              </div>
+              <PostCard key={post.id} post={post} isBest={false} />
             ))}
           </div>
+          {/* '더보기' 버튼 */}
           {visiblePosts.length < posts.length && (
             <button onClick={handleShowMore} className="show-more-btn">더보기</button>
           )}
         </section>
       </main>
 
+      {/* 'TOP' 버튼 */}
       {showTopButton && (
         <button onClick={handleScrollToTop} className="top-btn">TOP</button>
       )}
 
+      {/* 게시글 상세 팝업 */}
       {selectedPost && (
         <PostDetailPopup post={selectedPost} onClose={handleClosePopup} />
       )}
-      </div>
-  
+    </div>
   );
 }
 

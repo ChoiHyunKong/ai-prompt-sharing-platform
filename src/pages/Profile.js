@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getUserPosts } from '../services/api';
 import PostDetailPopup from '../components/PostDetailPopup'; // 새로 만든 팝업 컴포넌트 import
 import './Profile.css';
+import '../components/PostDetailPopup.css';
 
 function Profile({darkMode}) {
   // 상태 관리
