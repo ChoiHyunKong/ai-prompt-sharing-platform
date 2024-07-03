@@ -2,16 +2,28 @@
 
 import axios from 'axios';
 
+// API 기본 URL 설정
 const API_URL = 'http://localhost:5000/api';
 
+// 사용자 등록 함수
 export const register = (userData) => axios.post(`${API_URL}/auth/register`, userData);
+
+// 사용자 로그인 함수
 export const login = (userData) => axios.post(`${API_URL}/auth/login`, userData);
+
+// 새 게시글 생성 함수
 export const createPost = (postData, token) => axios.post(`${API_URL}/posts`, postData, { headers: { Authorization: `Bearer ${token}` } });
+
+// 모든 게시글 가져오기 함수
 export const getPosts = () => axios.get(`${API_URL}/posts`);
+
+// 특정 ID의 게시글 가져오기 함수
 export const getPostById = (id) => axios.get(`${API_URL}/posts/${id}`);
-export const getUserPosts = async () => {
+
+// 2023-07-05 수정: 페이징을 위한 매개변수 추가
+export const getUserPosts = async (page = 1, limit = 10) => {
     // 임시 데이터 반환
-    return [
+    const dummyPosts = [
       { id: 1, title: "첫 번째 게시글", imageUrl: "https://i.pinimg.com/564x/53/94/25/53942557e12e5fd7ea03c607f9eaaffd.jpg", likes: 210, views: 1100, excerpt: "첫 번째 게시글 내용...", tags: ["AI", "프롬프트"] },
       { id: 2, title: "두 번째 게시글", imageUrl: "https://i.pinimg.com/564x/9d/ad/b8/9dadb8fa5b9e81bc5af6a0be7067a1db.jpg", likes: 765, views: 3152, excerpt: "두 번째 게시글 내용...", tags: ["디자인", "AI"] },
       { id: 3, title: "두 번째 게시글", imageUrl: "https://i.pinimg.com/564x/35/14/8d/35148dcc2221c7a1ca1429387905637c.jpg", likes: 185, views: 1151, excerpt: "두 번째 게시글 내용...", tags: ["디자인", "AI"] },
@@ -56,10 +68,32 @@ export const getUserPosts = async () => {
       { id: 7, title: "여섯 번째 게시글", imageUrl: "https://i.pinimg.com/736x/f6/13/a7/f613a722600d67498220285a0078e73f.jpg", likes: 115, views: 1440, excerpt: "두 번째 게시글 내용...", tags: ["디자인", "AI"] },
 
     ];
-  };
-  
 
+    // 2023-07-05 추가: 페이징 로직
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    return dummyPosts.slice(startIndex, endIndex);
+};
+
+// 사용자 정보 가져오기 함수
 export const response = async () => {
     const response = await axios.get('/api/user/info');
     return response.date;
-}
+};
+
+// 2023-07-05 추가: 로그인을 위한 더미 데이터
+export const dummyUsers = [
+    { id: 1, username: "user1", password: "password1", email: "user1@example.com" },
+    { id: 2, username: "user2", password: "password2", email: "user2@example.com" },
+    { id: 3, username: "user3", password: "password3", email: "user3@example.com" },
+];
+
+// 2023-07-05 추가: 더미 데이터를 사용한 로그인 함수
+export const dummyLogin = (username, password) => {
+    const user = dummyUsers.find(u => u.username === username && u.password === password);
+    if (user) {
+        return Promise.resolve({ success: true, user: { ...user, password: undefined } });
+    } else {
+        return Promise.reject({ success: false, message: "Invalid credentials" });
+    }
+};

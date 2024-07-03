@@ -1,3 +1,5 @@
+/* src/pages/Home.css */
+
 /* 전체 홈 컨테이너 스타일 */
 .home-container {
   max-width: 1200px;
@@ -5,49 +7,7 @@
   padding: 20px;
 }
 
-/* Best 섹션 스타일 */
-.best-home-posts {
-  margin-bottom: 40px;
-}
-
-/* Best 게시글 그리드 레이아웃 */
-.best-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  height: 400px;
-}
-
-/* Best 게시글 개별 아이템 스타일 */
-.best-home-post {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  border: 1px solid gray;
-  border-radius: 2%;
-}
-
-.best-home-post img, .post-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Best 게시글 정보 오버레이 스타일 */
-.post-home-info, .post-card-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 10px;
-}
-
-/* 아이콘 스타일 */
-.crown-icon, .user-icon {
-  margin-right: 5px;
-}
+/* 2023-07-05 수정: Best 섹션 스타일 제거 */
 
 /* 일반 게시글 그리드 레이아웃 */
 .post-grid {
@@ -56,75 +16,79 @@
   gap: 20px;
 }
 
-/* 일반 게시글 카드 스타일 */
+/* 2023-07-05 수정: 게시글 카드 스타일 */
 .post-card {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 그림자 추가 */
 }
 
 .post-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* 호버 시 그림자 강화 */
 }
 
-.post-card h3 {
+/* 2023-07-05 수정: 게시글 이미지 스타일 */
+.post-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.post-card h4 {
   margin: 10px;
   font-size: 16px;
 }
 
-.post-card p {
-  margin: 5px 10px;
-  font-size: 14px;
-  color: #666;
-}
-
-/* '더보기' 버튼과 'TOP' 버튼 공통 스타일 */
-.show-more-btn, .top-btn {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.show-more-btn:hover, .top-btn:hover {
-  background-color: #0056b3;
-}
-
-/* 'TOP' 버튼 위치 고정 */
-.top-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-
-/* 호버 시 프롬프트 표시 스타일 */
-.post-hover {
+/* 2023-07-05 수정: 호버 시 나타나는 정보 스타일 */
+.post-hover-info {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-.post-card:hover .post-hover,
-.best-home-post:hover .post-hover {
+.post-card:hover .post-hover-info {
   opacity: 1;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.tag {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 3px 8px;
+  margin: 2px;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+/* 2023-07-05 추가: 로딩 텍스트 스타일 */
+.all-posts p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #666;
 }
 
 /* 반응형 디자인 - 태블릿 */
@@ -136,10 +100,6 @@
 
 /* 반응형 디자인 - 모바일 */
 @media (max-width: 768px) {
-  .best-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
   .post-grid {
     grid-template-columns: repeat(2, 1fr);
   }

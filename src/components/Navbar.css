@@ -1,97 +1,221 @@
 /* src/components/Navbar.css */
 
+/* 네비게이션 바 기본 스타일 */
 .navbar {
+  background-color: #fff;
+  height: 80px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--background-light);
-  transition: background-color var(--transition-speed);
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: background-color 0.3s ease;
 }
 
+/* 다크모드 스타일 */
 .navbar.dark-mode {
-  background-color: var(--background-dark);
+  background-color: #333;
+  color: #fff;
 }
 
+/* 네비게이션 바 컨테이너 스타일 */
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 100%;
+  padding: 0 50px;
 }
 
+/* 2023-07-04 수정: 로고 스타일 */
 .navbar-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--text-light);
+  color: #333;
   text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 20px; /* 로고와 검색창 사이 간격 */
 }
 
 .dark-mode .navbar-logo {
-  color: var(--text-dark);
+  color: #fff;
 }
 
+/* 2023-07-04 수정: 검색창 스타일 */
 .search-box {
-  display: flex;
+  flex-grow: 1; /* 검색창 너비 최대화 */
+  margin: 0 20px; /* 좌우 여백 */
 }
 
 .search-box input {
-  padding: 0.5rem;
-  border: 1px solid var(--text-light);
-  border-radius: 5px 0 0 5px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px; /* 둥근 모서리 */
+  font-size: 1rem;
 }
 
-.dark-mode .search-box input {
-  border-color: var(--text-dark);
-  background-color: var(--background-dark);
-  color: var(--text-dark);
-}
-
-.search-button {
-  border-radius: 0 5px 5px 0;
-}
-
-.navbar-actions {
+/* 2023-07-04 추가: 인증 버튼 컨테이너 스타일 */
+.auth-buttons {
   display: flex;
   align-items: center;
 }
 
-.mode-toggle,
-.menu-toggle {
-  margin-left: 1rem;
+/* 2023-07-04 추가: 로그인 버튼 스타일 */
+.login-button {
+  background-color: #f0f0f0; /* 밝은 회색 */
+  color: #333;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
 }
 
+.login-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* 2023-07-04 추가: 회원가입 버튼 스타일 */
+.register-button {
+  background-color: #F73B3B;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #d62e2e;
+}
+
+/* 2023-07-04 추가: 사용자 정보 및 알림 버튼 스타일 */
+.user-info-button,
+.notification-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* 햄버거 메뉴 버튼 스타일 */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 20px; /* 다른 요소와의 간격 */
+}
+
+/* 사이드 메뉴 스타일 */
 .side-menu {
   position: fixed;
   top: 0;
   right: -250px;
   width: 250px;
   height: 100%;
-  background-color: var(--background-light);
-  transition: right var(--transition-speed);
-  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: right 0.3s ease;
+  padding: 20px;
   box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-}
-
-.dark-mode .side-menu {
-  background-color: var(--background-dark);
 }
 
 .side-menu.open {
   right: 0;
 }
 
+/* 다크모드에서의 사이드 메뉴 스타일 */
+.dark-mode .side-menu {
+  background-color: rgba(51, 51, 51, 0.9);
+}
+
+/* 사이드 메뉴 링크 스타일 */
 .side-menu a {
   display: block;
-  padding: 0.5rem 0;
-  color: var(--text-light);
+  color: #333;
   text-decoration: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .dark-mode .side-menu a {
-  color: var(--text-dark);
+  color: #fff;
 }
 
-.side-menu a.active {
-  font-weight: bold;
+.side-menu a:hover, .side-menu a.active {
+  background-color: #f0f0f0;
+}
+
+.dark-mode .side-menu a:hover, .dark-mode .side-menu a.active {
+  background-color: #555;
+}
+
+/* 다크모드 토글 버튼 스타일 */
+.mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.mode-toggle:hover {
+  background-color: #f0f0f0;
+}
+
+.dark-mode .mode-toggle:hover {
+  background-color: #555;
+}
+
+/* 헤더 버튼 스타일 */
+.header-button {
+  
+  color: #d94c45;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header-button:hover {
+  background-color: #357abd;
+}
+
+/* 헤더 링크 스타일 */
+.header-link {
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.header-link:hover, .header-link.active {
+  background-color: #f0f0f0;
+}
+
+/* 다크 모드에서의 헤더 버튼 및 링크 스타일 */
+.dark-mode .header-button {
+  background-color: #6a5acd;
+}
+
+.dark-mode .header-button:hover {
+  background-color: #483d8b;
+}
+
+.dark-mode .header-link {
+  color: #fff;
+}
+
+.dark-mode .header-link:hover, .dark-mode .header-link.active {
+  background-color: #444;
 }
